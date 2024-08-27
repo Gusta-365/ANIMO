@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    /* Color beige claro */
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.envelope {
+    position: relative;
+    width: 80vmin;
+    height: 50vmin;
+    perspective: 1000px;
+}
+
+.envelope-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transition: transform 1s ease-in-out;
+}
+
+.envelope:hover .envelope-content {
+    transform: rotateX(180deg);
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e0d8d3;
+    /* Color beige suave */
+    border: 1px solid #bfb5a5;
+    /* Color beige oscuro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.flap.top {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+    background-color: #f4eae2;
+    /* Color nude muy claro */
+}
+
+.flap.bottom {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+}
+
+.letter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    /* Blanco */
+    border: 1px solid #bfb5a5;
+    /* Color beige oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#letterContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    /* Blanco */
+    border: 2px solid #e0d8d3;
+    /* Color beige suave */
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.letter-content {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #d4a8a0;
+    /* Color nude oscuro */
+    color: #ffffff;
+    /* Blanco */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b7988b;
+    /* Color nude más claro */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .envelope {
+        width: 90vmin;
+        height: 60vmin;
+    }
+
+    #letterContainer {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 16px;
+    }
+}
